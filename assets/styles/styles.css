@@ -1,0 +1,110 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+}
+
+.header-content {
+    position: relative;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    margin-bottom: 10px;
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.header-content p {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+}
+
+.content {
+    padding: 20px;
+}
+
+
+h2 {
+    color: #2575fc;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2575fc;
+    padding-bottom: 5px;
+}
+
+.details, .profile, .skills, .experience, .education, .courses, .certifications {
+    margin-bottom: 25px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills ul li, .courses ul li, .certifications ul li {
+    background: #f0f4ff;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #2575fc;
+    transition: background 0.3s ease;
+}
+
+.skills ul li:hover, .courses ul li:hover, .certifications ul li:hover {
+    background: #e0e7ff;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    header {
+        padding: 15px 0;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .header-content h1 {
+        font-size: 2em;
+    }
+
+    .header-content p {
+        font-size: 1em;
+    }
+}
