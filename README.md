@@ -10,7 +10,6 @@ This repository contains projects and exercises completed during the ITI Front E
 - [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
 - [Projects](#projects)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Technologies Used
@@ -58,9 +57,6 @@ A styled webpage demonstrating various CSS properties, including layout, typogra
 ### Project 3: JavaScript Interactivity
 A webpage enhanced with JavaScript to provide interactive features like form validation and dynamic content.
 
-## Contributing
-
-If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are welcome.
 
 ## License
 
