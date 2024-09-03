@@ -6,12 +6,18 @@ This repository contains projects and exercises completed during the ITI Front E
 
 ## Table of Contents
 
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Setup and Installation](#setup-and-installation)
-- [Projects](#projects)
-- [Contributing](#contributing)
-- [License](#license)
+- [ITI Front End Summer Training](#iti-front-end-summer-training)
+  - [Overview](#overview)
+  - [Table of Contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+  - [Project Structure](#project-structure)
+  - [Setup and Installation](#setup-and-installation)
+  - [Projects](#projects)
+    - [Project 1: HTML Basics](#project-1-html-basics)
+    - [Project 2: CSS Styling](#project-2-css-styling)
+    - [Project 3: JavaScript Interactivity](#project-3-javascript-interactivity)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Technologies Used
 
@@ -22,13 +28,11 @@ This repository contains projects and exercises completed during the ITI Front E
 ## Project Structure
 
 ```
-|-- Project 1: HTML Basics
-|-- Project 2: CSS Styling
-|-- Project 3: JavaScript Interactivity
+|-- Task:
 |-- assets/
 |   |-- images/
 |   |-- styles/
-|-- README.md
+|-- index.html
 ```
 
 ## Setup and Installation
