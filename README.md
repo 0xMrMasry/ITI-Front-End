@@ -12,10 +12,6 @@ This repository contains projects and exercises completed during the ITI Front E
   - [Technologies Used](#technologies-used)
   - [Project Structure](#project-structure)
   - [Setup and Installation](#setup-and-installation)
-  - [Projects](#projects)
-    - [Project 1: HTML Basics](#project-1-html-basics)
-    - [Project 2: CSS Styling](#project-2-css-styling)
-    - [Project 3: JavaScript Interactivity](#project-3-javascript-interactivity)
   - [License](#license)
 
 ## Technologies Used
@@ -40,26 +36,15 @@ To run any project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ITI-Front-End-Summer-Training.git
+   git clone https://github.com/0xmrmasry/ITI-Front-End.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd ITI-Front-End-Summer-Training/Project-1
+   cd ITI-Front-End/Task
    ```
 
 3. Open the `index.html` file in your browser to view the project.
-
-## Projects
-
-### Project 1: HTML Basics
-A basic webpage created using semantic HTML to structure content.
-
-### Project 2: CSS Styling
-A styled webpage demonstrating various CSS properties, including layout, typography, and colors.
-
-### Project 3: JavaScript Interactivity
-A webpage enhanced with JavaScript to provide interactive features like form validation and dynamic content.
 
 
 ## License
