@@ -47,9 +47,6 @@ To run any project locally:
 3. Open the `index.html` file in your browser to view the project.
 
 
-[Task 1](/Task 1/index.html)
-[Task 2](/Task 2/index.html)
-
 ## License
 
 This project is licensed under the MIT License.
