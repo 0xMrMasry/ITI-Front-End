@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link
+        href="https://fonts.bunny.net/css?family=source-sans-pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- main section start -->
+    <main class="position-relative">
+        <div class="w-100 h-100 position-absolute z-0">
+            <img src="./assets/shapes/Ellipse2.svg" alt="ellipse 2 shape" height="500" class="position-absolute">
+            <img src="./assets/shapes/Ellipse1.svg" alt="ellipse 1 shape" class="position-absolute shape">
+        </div>
+
+        <div class="text-white position-relative w-100 min-vh-100 z-1 main-content-container">
+            <div class="w-75 mx-auto h-100 d-flex flex-column justify-content-center">
+                <div>
+                    <h1 class="main-h1 mb-3">Find Your New Bestie</h1>
+                    <p class="main-p mb-5">The most amazing list of adoptable pets at your fingertips. Updated fresh
+                        daily.
+                    </p>
+                    <div class="d-flex gap-4">
+                        <button class="btn text-white bg-primary">View Pets</button>
+                        <button class="btn text-white border-2 border-white bg-transparent">Manage Pets</button>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-md-wrap flex-lg-nowrap gap-3 main-cards-container">
+                    <div class="col-lg-3 main-card flex-grow-1">
+                        <img src="./assets/icons/sun.svg" alt="sun icon" width="48" height="48">
+                        <h2 class="fs-3 fw-semibold">Sunny Play</h2>
+                        <p>Our center is located in beautiful Miami, and it's currently 84°F at our pet playground.</p>
+                    </div>
+                    <div class="col-lg-3 main-card flex-grow-1">
+                        <img src="./assets/icons/emoji-kiss.svg" alt="sun icon" width="48" height="48">
+                        <h2 class="fs-3 fw-semibold">Dedicated Staff</h2>
+                        <p>Our center has over 70 volunteers who play with the pets four times daily.</p>
+                    </div>
+                    <div class="col-lg-3 main-card flex-grow-1">
+                        <img src="./assets/icons/trophy.svg" alt="sun icon" width="48" height="48">
+                        <h2 class="fs-3 fw-semibold">Voted #1</h2>
+                        <p>For the last five years we've consistently been voted the #1 pet adoption center in the
+                            state.</p>
+                    </div>
+                    <div class="col-lg-3 main-card flex-grow-1">
+                        <img src="./assets/icons/moon-stars.svg" alt="sun icon" width="48" height="48">
+                        <h2 class="fs-3 fw-semibold">Nightly Yoga</h2>
+                        <p>Every night our staff leads a yoga session and the animals are free to roam around and relax
+                            around people.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main section end -->
+    <!-- section one start -->
+    <section>
+        <div class="text-white position-relative w-100 min-vh-100 z-1 main-content-container">
+            <div class="w-75 mx-auto h-100 d-flex flex-column justify-content-center">
+                <div>
+                    <h1 class="text-black pets-h1 mb-4">Meet Our Friends</h1>
+                    <div class="d-flex flex-row gap-5 align-content-center tabs-container">
+                        <p class="">show me:</p>
+                        <p class="tab active-tab">All Pets</p>
+                        <p class="tab">Only Cats</p>
+                        <p class="tab">Only Dogs</p>
+                    </div>
+                </div>
+                <!-- row one -->
+                <div class="row gap-3 main-cards-container">
+                    <div class="col d-flex pet-card">
+                        <div class=" pet-card-image">
+                            <img src="./assets//images/barksolat.jpg" width="" height="" alt="pet pic"
+                                class="img-fluid">
+                        </div>
+                        <div class="text-white flex-grow-1 pet-card-content">
+                            <div class="d-flex align-items-center gap-3">
+                                <h2 class="text-black fw-semibold text-capitalize fs-3">Barksalot</h2>
+                                <!-- Button trigger modal -->
+                                <img src="./assets//icons/envelope-plus.svg" alt="envelope icon" width="24"
+                                    height="24" class="envelop-icon" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                <!-- Modal -->
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true" class="position-relative z-2">
+                                    <div class="modal-dialog ">
+                                        <div class="modal-content d-flex flex-row">
+                                            <div class="modal-body position-relative">
+                                                <img src="./assets/images/barksolat.jpg" alt="dog-pic">
+                                                <div class="thank-box">
+                                                    <p class="p-0 m-0">Thank you for interest in</p>
+                                                    <h2 class=" text-black fw-semibold text-capitalize fs-3">Barksalot
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Barksalot is a sweet and lovable 3 year old ball of fluff. He loves carrots, celery, and
+                                playing fetch.</p>
+                            <p class="pet-age">2 years old</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex pet-card">
+                        <div class=" pet-card-image">
+                            <img src="./assets//images/meow.jpg" width="" height="" alt="pet pic" class="img-fluid">
+                        </div>
+                        <div class="flex-grow-1 pet-card-content">
+                            <div class="d-flex align-items-center gap-3">
+                                <h2 class="text-black fw-semibold text-capitalize fs-3">Meowsalot</h2>
+                                <img src="./assets//icons/envelope-plus.svg" alt="envelope icon" width="24"
+                                    height="24" class="envelop-icon">
+                            </div>
+                            <p>Meowsalot is the most talkative cat we've ever come across. Constant meowing, chirping
+                                and purring!</p>
+                            <p class="pet-age">1 years old</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- row two -->
+                <div class="row gap-3 main-cards-container">
+                    <div class="col d-flex pet-card">
+                        <div class=" pet-card-image">
+                            <img src="./assets//images/woof.jpg" width="" height="" alt="pet pic" class="img-fluid">
+                        </div>
+                        <div class="flex-grow-1 pet-card-content">
+                            <div class="d-flex align-items-center gap-3">
+                                <h2 class="text-black fw-semibold text-capitalize fs-3">Woof</h2>
+                                <img src="./assets//icons/envelope-plus.svg" alt="envelope icon" width="24"
+                                    height="24" class="envelop-icon">
+                            </div>
+                            <p>Woof is a very talkative and sweet pup. She loves beets, plums, cuddles and jumping over
+                                low fences.</p>
+                            <p class="pet-age">less than a year old</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex pet-card">
+                        <div class=" pet-card-image">
+                            <img src="./assets//images/purrsloud.jpg" width="" height="" alt="pet pic"
+                                class="img-fluid">
+                        </div>
+                        <div class="flex-grow-1 pet-card-content">
+                            <div class="d-flex align-items-center gap-3">
+                                <h2 class="text-black fw-semibold fs-3">Purrsloud</h2>
+                                <img src="./assets//icons/envelope-plus.svg" alt="envelope icon" width="24"
+                                    height="24" class="envelop-icon">
+                            </div>
+                            <p>Purrsloud has the loudest and most relaxing purr that's come through our center. Come
+                                hear it yourself.</p>
+                            <p class="pet-age">4 years old</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section one end -->
+    <footer class="w-100 d-flex justify-content-center">
+        <p class="p-0 m-0">© 2023 Fake Adoption Center. All rights reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
