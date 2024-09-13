@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Finder</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .loading {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+    <nav class="bg-white shadow-md p-4 mb-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold gradient-text">GitHub User Finder</h1>
+            <button id="theme-toggle" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition duration-300">
+                <i class="fas fa-moon"></i> Toggle Theme
+            </button>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+            <div class="mb-4">
+                <input type="text" id="username" placeholder="Enter GitHub username" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button onclick="findUser()" class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Find User</button>
+        </div>
+
+        <div id="userInfo" class="max-w-md mx-auto mt-8"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        let isDarkMode = false;
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('bg-gray-900');
+            document.body.classList.toggle('text-black');
+            document.querySelector('nav').classList.toggle('bg-gray-800');
+            document.querySelector('.max-w-md').classList.toggle('bg-gray-800');
+            document.getElementById('theme-toggle').classList.toggle('bg-gray-700');
+            document.getElementById('theme-toggle').classList.toggle('text-white');
+        }
+
+        function findUser() {
+            const username = document.getElementById('username').value;
+            const url = `https://api.github.com/users/${username}`;
+            const userInfoDiv = document.getElementById('userInfo');
+
+            userInfoDiv.innerHTML = '<div class="flex justify-center"><div class="loading"></div></div>';
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('User not found');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    userInfoDiv.innerHTML = `
+                        <div class="bg-white rounded-lg shadow-md p-6 ${isDarkMode ? 'bg-gray-800 text-black' : ''}">
+                            <div class="flex items-center mb-4">
+                                <img src="${data.avatar_url}" alt="${data.name}" class="w-20 h-20 rounded-full mr-4">
+                                <div>
+                                    <h2 class="text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}">${data.name || data.login}</h2>
+                                    <p class="text-gray-600 ${isDarkMode ? 'text-gray-900' : ''}">${data.bio || 'No bio available'}</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="text-center">
+                                    <p class="font-bold">${data.followers}</p>
+                                    <p class="text-sm text-gray-600 ${isDarkMode ? 'text-gray-900' : ''}">Followers</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-bold">${data.following}</p>
+                                    <p class="text-sm text-gray-600 ${isDarkMode ? 'text-gray-900' : ''}">Following</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-bold">${data.public_repos}</p>
+                                    <p class="text-sm text-gray-600 ${isDarkMode ? 'text-gray-900' : ''}">Repos</p>
+                                </div>
+                            </div>
+                            <a href="${data.html_url}" target="_blank" class="block w-full text-center bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">View Profile</a>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    userInfoDiv.innerHTML = `
+                        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 ${isDarkMode ? 'bg-red-900 text-red-300' : ''}" role="alert">
+                            <p class="font-bold">Error</p>
+                            <p>User not found or an error occurred. Please try again.</p>
+                        </div>
+                    `;
+                });
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+        .loading {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8 text-blue-600">Weather App</h1>
+        <div id="weather" class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+            <div class="loading mx-auto"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        const API_KEY = 'efa5355520104700837233934240809';
+
+        function getWeatherIcon(code) {
+            // Map WeatherAPI condition codes to Font Awesome icons
+            const iconMap = {
+                1000: 'sun',
+                1003: 'cloud-sun',
+                1006: 'cloud',
+                1009: 'cloud',
+                1030: 'smog',
+                1063: 'cloud-rain',
+                1066: 'snowflake',
+                1069: 'cloud-sleet',
+                1072: 'cloud-rain',
+                1087: 'bolt',
+                1114: 'snowflake',
+                1117: 'snowflake',
+                1135: 'smog',
+                1147: 'smog',
+                1150: 'cloud-rain',
+                1153: 'cloud-rain',
+                1168: 'cloud-rain',
+                1171: 'cloud-rain',
+                1180: 'cloud-rain',
+                1183: 'cloud-rain',
+                1186: 'cloud-rain',
+                1189: 'cloud-rain',
+                1192: 'cloud-showers-heavy',
+                1195: 'cloud-showers-heavy',
+                1198: 'cloud-rain',
+                1201: 'cloud-rain',
+                1204: 'cloud-sleet',
+                1207: 'cloud-sleet',
+                1210: 'snowflake',
+                1213: 'snowflake',
+                1216: 'snowflake',
+                1219: 'snowflake',
+                1222: 'snowflake',
+                1225: 'snowflake',
+                1237: 'snowflake',
+                1240: 'cloud-rain',
+                1243: 'cloud-showers-heavy',
+                1246: 'cloud-showers-heavy',
+                1249: 'cloud-sleet',
+                1252: 'cloud-sleet',
+                1255: 'snowflake',
+                1258: 'snowflake',
+                1261: 'cloud-hail',
+                1264: 'cloud-hail',
+                1273: 'cloud-bolt',
+                1276: 'cloud-bolt',
+                1279: 'cloud-snow',
+                1282: 'cloud-snow'
+            };
+            return iconMap[code] || 'question';
+        }
+
+        function getWeather(latitude, longitude) {
+            const url = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${latitude},${longitude}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherDiv = document.getElementById('weather');
+                    const iconName = getWeatherIcon(data.current.condition.code);
+                    weatherDiv.innerHTML = `
+                        <div class="text-center">
+                            <h2 class="text-2xl font-bold mb-2">${data.location.name}, ${data.location.country}</h2>
+                            <div class="flex justify-center items-center mb-4">
+                                <i class="fas fa-${iconName} text-6xl text-yellow-500 mr-4"></i>
+                                <div class="text-left">
+                                    <p class="text-4xl font-bold">${data.current.temp_c}°C</p>
+                                    <p class="text-xl">${data.current.condition.text}</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <p><i class="fas fa-tint text-blue-500 mr-2"></i> Humidity: ${data.current.humidity}%</p>
+                                    <p><i class="fas fa-wind text-gray-500 mr-2"></i> Wind: ${data.current.wind_kph} km/h</p>
+                                </div>
+                                <div>
+                                    <p><i class="fas fa-compass text-red-500 mr-2"></i> Wind Direction: ${data.current.wind_dir}</p>
+                                    <p><i class="fas fa-tachometer-alt text-green-500 mr-2"></i> Pressure: ${data.current.pressure_mb} mb</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('weather').innerHTML = `
+                        <div class="text-center text-red-500">
+                            <i class="fas fa-exclamation-triangle text-4xl mb-2"></i>
+                            <p>Failed to fetch weather data. Please try again later.</p>
+                        </div>
+                    `;
+                });
+        }
+
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const { latitude, longitude } = position.coords;
+                getWeather(latitude, longitude);
+            }, error => {
+                console.error('Error:', error);
+                document.getElementById('weather').innerHTML = `
+                    <div class="text-center text-yellow-500">
+                        <i class="fas fa-map-marker-alt text-4xl mb-2"></i>
+                        <p>Unable to retrieve your location. Please enable location services and refresh the page.</p>
+                    </div>
+                `;
+            });
+        } else {
+            document.getElementById('weather').innerHTML = `
+                <div class="text-center text-red-500">
+                    <i class="fas fa-exclamation-circle text-4xl mb-2"></i>
+                    <p>Geolocation is not supported by your browser. Please use a modern browser with location services enabled.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
